@@ -11,7 +11,7 @@ import { FormBuilder } from '@angular/forms';
   `,
   styles: [],
 })
-export class HabitFormComponent implements OnInit {
+export class HabitFormComponent {
   habitForm: any;
   @Output() addHabit = new EventEmitter<any>();
   constructor(private formBuilder: FormBuilder) {
@@ -24,6 +24,4 @@ export class HabitFormComponent implements OnInit {
     this.addHabit.emit(newHabit);
     this.habitForm.reset();
   }
-
-  ngOnInit(): void {}
 }

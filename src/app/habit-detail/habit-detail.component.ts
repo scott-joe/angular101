@@ -9,9 +9,7 @@ import { Component, OnInit, Input } from '@angular/core';
   `,
   styles: [],
 })
-export class HabitDetailComponent implements OnInit {
+export class HabitDetailComponent {
   @Input() habit: any;
-
   constructor() {}
-  ngOnInit(): void {}
 }
