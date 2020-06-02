@@ -9,7 +9,7 @@ import { HabitService } from '../habit.service';
     <app-habit-form (addHabit)="onAddHabit($event)"></app-habit-form>
     <ul>
       <app-habit-detail
-        *ngFor="let habit of habits"
+        *ngFor="let habit of habits | async"
         [habit]="habit"
       ></app-habit-detail>
     </ul>
@@ -20,9 +20,7 @@ export class HabitListComponent implements OnInit {
   habits: Observable<any>;
   constructor(private habitService: HabitService) {}
   ngOnInit(): void {
-    this.habitService.getHabits().subscribe((habits) => {
-      this.habits = habits;
-    });
+    this.habits = this.habitService.getHabits();
   }
   onAddHabit(newHabit: any) {
     this.habitService.addHabit(newHabit);
