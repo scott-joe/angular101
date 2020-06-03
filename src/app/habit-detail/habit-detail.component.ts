@@ -3,7 +3,13 @@ import { Habit } from '../habit';
 
 @Component({
   selector: 'app-habit-detail',
-  template: ` <p>{{ habit.title }} (Count: {{ habit.count }})</p> `,
+  template: `
+    <li>
+      {{ habit.title }} (Count: {{ habit.count }})<button type="button">
+        Delete
+      </button>
+    </li>
+  `,
   styles: [],
 })
 export class HabitDetailComponent {
