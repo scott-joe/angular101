@@ -4,10 +4,9 @@ import { Habit } from '../habit';
 @Component({
   selector: 'app-habit-detail',
   template: `
-    <li>
-      {{ habit.title }} (Count: {{ habit.count }})<button type="button">
-        Delete
-      </button>
+    <li [style.color]="habit.streak ? 'red' : 'black'">
+      {{ habit.title }} (Count: {{ habit.count }})
+      <button type="button">Delete</button>
     </li>
   `,
   styles: [],

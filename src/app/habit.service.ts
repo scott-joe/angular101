@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { tap, map } from 'rxjs/operators';
 import { Habit } from './habit';
 import { HttpClient } from '@angular/common/http';
 
@@ -17,7 +17,14 @@ export class HabitService {
   }
 
   getHabits(): Observable<Habit[]> {
-    return this.http.get<Habit[]>('/api/habits');
+    return this.http.get<Habit[]>('/api/habits').pipe(
+      map((habits) => {
+        return habits.map((habit) => {
+          habit.streak = habit.count > 5 ? true : false;
+          return habit;
+        });
+      })
+    );
   }
 
   addHabit(newHabit) {
