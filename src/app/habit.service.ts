@@ -9,22 +9,27 @@ export class HabitService {
     {
       id: 1,
       title: 'Check in with the parents this week',
+      count: 1,
     },
     {
       id: 2,
       title: 'Check in with the parents this month',
+      count: 6,
     },
     {
       id: 3,
       title: 'Check in with the parents this year',
+      count: 3,
     },
     {
       id: 4,
       title: 'Check in with the parents this decade',
+      count: 10,
     },
     {
       id: 5,
       title: 'Check in with the parents this century',
+      count: 65,
     },
   ];
 
@@ -38,6 +43,7 @@ export class HabitService {
     this.habits.push({
       id: this.habits.length + 1,
       title,
+      count: Math.round(Math.random() * 100),
     });
   }
 }
