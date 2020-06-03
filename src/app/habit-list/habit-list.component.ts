@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { HabitService } from '../habit.service';
 import { Habit } from '../habit';
 
@@ -21,9 +22,35 @@ export class HabitListComponent implements OnInit {
   habits: Observable<Habit[]>;
   constructor(private habitService: HabitService) {}
   ngOnInit(): void {
-    this.habits = this.habitService.getHabits();
+    // this.habits = this.habitService.getHabits();
+    const result = this.habitService.getHabits().pipe(
+      map((habits) => {
+        return habits.map((habit) => {
+          habit.streak = habit.count > 5 ? true : false;
+          return habit;
+        });
+      })
+      // map((habits) => {
+      //   console.log('habits', habits);
+      //   // return habits;
+      //   const result = habits.map((habit) => {
+      //     // console.log(habit);
+      //     habit.streak = habit.count > 5 ? true : false;
+      //     return habit;
+      //     // return {
+      //     //   ...habit,
+      //     //   streak: habit.count > 5 ? true : false,
+      //     // };
+      //   });
+      //   console.log('result', result);
+      //   return result;
+      // })
+    );
+
+    console.log('outer result', result);
+    this.habits = result;
   }
-  onAddHabit(newHabit: Habit) {
+  onAddHabit(newHabit: any) {
     this.habitService.addHabit(newHabit);
   }
 }

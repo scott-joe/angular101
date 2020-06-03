@@ -8,7 +8,12 @@ import { HabitListComponent } from './habit-list/habit-list.component';
 import { HabitFormComponent } from './habit-form/habit-form.component';
 
 @NgModule({
-  declarations: [AppComponent, HabitDetailComponent, HabitListComponent, HabitFormComponent],
+  declarations: [
+    AppComponent,
+    HabitDetailComponent,
+    HabitListComponent,
+    HabitFormComponent,
+  ],
   imports: [BrowserModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
