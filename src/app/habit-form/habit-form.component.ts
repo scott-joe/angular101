@@ -21,7 +21,7 @@ export class HabitFormComponent {
   }
 
   onSubmit(newHabit: any) {
-    this.addHabit.emit(newHabit);
+    if (!!newHabit.title) this.addHabit.emit(newHabit);
     this.habitForm.reset();
   }
 }
