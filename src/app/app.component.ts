@@ -4,11 +4,13 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
     <h1>{{ title }}</h1>
+    <a routerLink="/list">List</a>
+    <a routerLink="/settings">Settings</a>
     <section>
-      <app-habit-list></app-habit-list>
+      <router-outlet></router-outlet>
     </section>
   `,
-  styles: ['h1 { color: blue }'],
+  styles: ['h1 { color: blue }', 'a { padding: 10px }'],
 })
 export class AppComponent {
   title = 'angular101';
