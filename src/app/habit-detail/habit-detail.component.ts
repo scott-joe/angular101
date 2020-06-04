@@ -6,7 +6,7 @@ import { Habit } from '../habit';
   template: `
     <li [style.color]="habit.streak ? 'red' : 'black'">
       {{ habit.title }} (Count: {{ habit.count }})
-      <button type="button">Delete</button>
+      <!-- <button type="button">Delete</button> -->
     </li>
   `,
   styles: [],
